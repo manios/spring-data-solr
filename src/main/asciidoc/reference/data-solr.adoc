@@ -87,6 +87,26 @@ Using the `solr-server` or `embedded-solr-server` element registers an instance 
 ----
 ====
 
+.CloudSolrClient using Namespace
+====
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:solr="http://www.springframework.org/schema/data/solr"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/data/solr
+    http://www.springframework.org/schema/data/solr/spring-solr.xsd">
+
+  <solr:cloud-solr-client id="solrClient" zkHost="localhost:2181,localhost:2182,localhost:2183" 
+				collection="jet2pilot" zkConnectTimeout="1300" zkClientTimeout="1400" 
+				httpConnectTimeout="1500" httpSoTimeout="1800" />
+</beans>
+----
+====
+
 [[solr.annotation]]
 === Annotation based configuration
 

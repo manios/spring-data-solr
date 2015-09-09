@@ -81,5 +81,62 @@
 			</xsd:complexContent>
 		</xsd:complexType>
 	</xsd:element>
+	
+	<xsd:element name="cloud-solr-client">
+		<xsd:annotation>
+			<xsd:documentation source="java: org.springframework.data.solr.support.CloudSolrClientFactoryBean" />
+			<xsd:appinfo>
+				<tool:assignable-to type="org.apache.solr.client.solrj.SolrClient "/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+				    <xsd:attribute name="zkHost" use="required" type="xsd:string">
+				    	<xsd:annotation>
+				    		<xsd:documentation>
+							A pair of IP and its respective port of the Zookeeper server which belongs to the Zookeeper ensemble. This string can contain multiple IP:port definitions separated by comma.
+							</xsd:documentation>
+						</xsd:annotation>
+				    </xsd:attribute>
+				    <xsd:attribute name="collection" use="required" type="xsd:string">
+				    	<xsd:annotation>
+				    		<xsd:documentation>
+							A SolrCloud collection name
+							</xsd:documentation>
+						</xsd:annotation>
+				    </xsd:attribute>
+				    <xsd:attribute name="zkConnectTimeout" type="xsd:string" use="optional" default="10000">
+				    	<xsd:annotation>
+				    		<xsd:documentation>
+							Connect timeout to the Zookeeper ensemble in milliseconds. Default is 10000 ms.
+							</xsd:documentation>
+						</xsd:annotation>
+				    </xsd:attribute>
+				    <xsd:attribute name="zkClientTimeout" type="xsd:string" use="optional" default="10000">
+				    	<xsd:annotation>
+				    		<xsd:documentation>
+							Connect timeout to the Zookeeper ensemble in milliseconds. Default is 10000 ms.
+							</xsd:documentation>
+						</xsd:annotation>
+				    </xsd:attribute>
+				    <xsd:attribute name="httpConnectTimeout" type="xsd:string" use="optional" default="100">
+				    	<xsd:annotation>
+				    		<xsd:documentation>
+							The HTTP connection timeout of the underlying LBHttpSolrClient in milliseconds. Default is 100 ms.
+							</xsd:documentation>
+						</xsd:annotation>
+				    </xsd:attribute>
+				    <xsd:attribute name="httpSoTimeout" type="xsd:string" use="optional" default="0">
+				    	<xsd:annotation>
+				    		<xsd:documentation>
+							The HTTP soTimeout (read timeout) of the underlying LBHttpSolrClient in milliseconds. Default is 0 (infinite timeout).
+							</xsd:documentation>
+						</xsd:annotation>
+				    </xsd:attribute>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
 
 </xsd:schema>

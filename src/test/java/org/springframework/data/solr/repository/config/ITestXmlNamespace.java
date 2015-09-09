@@ -19,6 +19,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
+import org.apache.solr.client.solrj.impl.CloudSolrClient;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.impl.LBHttpSolrClient;
 import org.junit.Test;
@@ -46,5 +47,6 @@ public class ITestXmlNamespace {
 		assertThat(context.getBean(EmbeddedSolrServer.class), is(notNullValue()));
 		assertThat(context.getBean("httpSolrClient", HttpSolrClient.class), is(notNullValue()));
 		assertThat(context.getBean("lbHttpSolrClient", LBHttpSolrClient.class), is(notNullValue()));
+		assertThat(context.getBean("cloudSolrClient", CloudSolrClient.class), is(notNullValue()));
 	}
 }

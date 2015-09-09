@@ -9,7 +9,10 @@
 	<solr:embedded-solr-server id="solrClient" solrHome="classpath:org/springframework/data/solr" /> 
 	<solr:solr-client id="httpSolrClient" url="http://localhost:8983/solr" />
 	<solr:solr-client id="lbHttpSolrClient" url="http://localhost:8983/solr,http://127.0.0.1:8983/solr" />
-	
+	<solr:cloud-solr-client id="cloudSolrClient" zkHost="localhost:2181,localhost:2182,localhost:2183" 
+							collection="jet2pilot" zkConnectTimeout="1300" zkClientTimeout="1400" 
+							httpConnectTimeout="1500" httpSoTimeout="1800" />
+		
 	<bean id="solrTemplate" class="org.springframework.data.solr.core.SolrTemplate">
 		<constructor-arg ref="solrClient" />
 	</bean>
